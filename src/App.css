@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.black{
+  color: #282c34;
+}
+
+.navey{
+  text-align: center;
+  width: 100%;
+  padding: 2rem 0rem;
+  
+}
