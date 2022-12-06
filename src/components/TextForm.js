@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-function Textform() {
+function Textform(props) {
 
     const [text, setText] = useState("")
+
+
+
     // useState(param) = this parameter is the initial value for the text 
     // setText is the FUNCTION that HELPS to RE-set the text
 
@@ -10,34 +13,46 @@ function Textform() {
     function changeToUppercase() {
         const updatedText = text.toUpperCase();
         setText(updatedText)
+
+        text.length > 0 ? props.alert("Text Changed to UpperCase", "success") : props.alert("Enter something", "Error")
+        document.title="Text Changed to UpperCase"
     }
     function changeToLowercase() {
         const updatedText = text.toLowerCase();
         setText(updatedText)
+        text.length > 0 ? props.alert("Text Changed to LowerCase", "success") : props.alert("Enter something", "Error")
+        document.title="Text Changed to LowerCase"
+
     }
     function textChange(event) {
         setText(event.target.value)
     }
-    function word(text){
-        let arr= text.split(" ")// this will return array splitting on the basis of each space
-       arr= arr.filter(elem=>elem !=="").length  // this will check whether the above returned arry elem != " " , hence give the arr
+    function word(text) {
+        let arr = text.split(" ")// this will return array splitting on the basis of each space
+        arr = arr.filter(elem => elem !== "").length  // this will check whether the above returned arry elem != " " , hence give the arr
         return arr
     }
+
+
     return (
         <>
-            <h1>Textform</h1>
-
-            <div class="mb-3">
-                <textarea className="form-control" value={text} onChange={textChange} id="exampleFormControlTextarea1" rows="6" placeholder='Enter Text'></textarea>
-                <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToUppercase}>To UpperCase</button>
-                <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToLowercase}>To LowerCase</button>
-            </div>
-
             <div>
-                <h2>Text Summary</h2>
-                <p> {word(text)} Words, {text.length} Characters</p>
-                <h2>Preview</h2>
-                <p> {text}</p>
+                <h1>Textform</h1>
+
+                <div class="mb-3" >
+                    <textarea className="form-control" value={text} onChange={textChange} id="exampleFormControlTextarea1" rows="6" placeholder='Enter Text' style={{ color: props.mode === "light" ? "black" : "white", backgroundColor: props.mode === "light" ? "white" : "#45856f" }}></textarea>
+                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToUppercase}>To UpperCase</button>
+                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToLowercase}>To LowerCase</button>
+
+
+                </div>
+
+                <div>
+                    <h2>Text Summary</h2>
+                    <p> {word(text)} Words, {text.length} Characters</p>
+                    <h2>Preview</h2>
+                    <p> {text.length > 0 ? text : "Enter something to preview text"}</p>
+                </div>
             </div>
         </>
     )
