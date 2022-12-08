@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 function Textform(props) {
 
     const [text, setText] = useState("")
-
+    const navigate = useNavigate();
 
 
     // useState(param) = this parameter is the initial value for the text 
@@ -15,13 +16,13 @@ function Textform(props) {
         setText(updatedText)
 
         text.length > 0 ? props.alert("Text Changed to UpperCase", "success") : props.alert("Enter something", "Error")
-        document.title="Text Changed to UpperCase"
+        document.title = "Text Changed to UpperCase"
     }
     function changeToLowercase() {
         const updatedText = text.toLowerCase();
         setText(updatedText)
         text.length > 0 ? props.alert("Text Changed to LowerCase", "success") : props.alert("Enter something", "Error")
-        document.title="Text Changed to LowerCase"
+        document.title = "Text Changed to LowerCase"
 
     }
     function textChange(event) {
@@ -43,6 +44,8 @@ function Textform(props) {
                     <textarea className="form-control" value={text} onChange={textChange} id="exampleFormControlTextarea1" rows="6" placeholder='Enter Text' style={{ color: props.mode === "light" ? "black" : "white", backgroundColor: props.mode === "light" ? "white" : "#45856f" }}></textarea>
                     <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToUppercase}>To UpperCase</button>
                     <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToLowercase}>To LowerCase</button>
+                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={() => navigate(-1)}>go back</button>
+                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={() => navigate("/byClass")}>To class</button>
 
 
                 </div>

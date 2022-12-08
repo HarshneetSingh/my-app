@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-
 export class TextForm2 extends Component {
     constructor(props) {
      
         super(props)
-      
         this.state = {
             text: "",
             
@@ -46,10 +44,9 @@ export class TextForm2 extends Component {
        arr= arr.filter(elem=>elem !=="").length  // this will check whether the above returned arry elem != " " , hence give the arr
         return arr
     }
-
+ 
     
     render() {
-
         return (
             <>
             <hr></hr>
@@ -71,5 +68,6 @@ export class TextForm2 extends Component {
         )
     }
 }
+
 
 export default TextForm2

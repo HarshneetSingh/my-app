@@ -9,6 +9,8 @@ import {
   Routes
 
 } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
+
 function App() {
 
   const [mode, setMode] = useState("light");
@@ -58,26 +60,24 @@ function App() {
 
       <Routes>
         <Route path='/' element={
-          <TextForm mode={mode} alert={showAlert} />
-        }>
-          {/* <div className='container' style={{ color: mode === "light" ? "black" : "white" }}>
-
+          <>
+            <div className='container' style={{ color: mode === "light" ? "black" : "white" }}>
               <h1 className='my-5'>by  function</h1>
+              <TextForm mode={mode} alert={showAlert} />
+            </div>
+          </>
+        }>
 
-              
-
-            </div> */}
         </Route>
-         <Route  path='/byClass' element={<TextForm2 mode={mode} alert={showAlert} />}>
-
-         {/*   <div className='container' style={{ color: mode === "light" ? "black" : "white" }}>
-
+        <Route path='/byClass' element={
+          <>
+            <div className='container' style={{ color: mode === "light" ? "black" : "white" }}>
               <h1 className='my-5'>by  Class</h1>
-
-              
-
-            </div>*/}
-          </Route > 
+              <TextForm2 mode={mode} alert={showAlert} />
+            </div>
+          </>
+        }>
+        </Route >
       </Routes>
 
 
