@@ -29,7 +29,7 @@ function Textform(props) {
         setText(event.target.value)
     }
     function word(text) {
-        let arr = text.split(" ")// this will return array splitting on the basis of each space
+        let arr = text.split(/\s+/)// this will return array splitting on the basis of each space or \n
         arr = arr.filter(elem => elem !== "").length  // this will check whether the above returned arry elem != " " , hence give the arr
         return arr
     }
@@ -40,12 +40,12 @@ function Textform(props) {
             <div>
                 <h1>Textform</h1>
 
-                <div class="mb-3" >
+                <div className="mb-3" >
                     <textarea className="form-control" value={text} onChange={textChange} id="exampleFormControlTextarea1" rows="6" placeholder='Enter Text' style={{ color: props.mode === "light" ? "black" : "white", backgroundColor: props.mode === "light" ? "white" : "#45856f" }}></textarea>
-                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToUppercase}>To UpperCase</button>
-                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={changeToLowercase}>To LowerCase</button>
-                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={() => navigate(-1)}>go back</button>
-                    <button className='btn btn-primary my-3 mx-3' type='button' onClick={() => navigate("/byClass")}>To class</button>
+                    <button disabled={text.length===0} className='btn btn-primary my-3 mx-3' type='button' onClick={changeToUppercase}>To UpperCase</button>
+                    <button disabled={text.length===0} className='btn btn-primary my-3 mx-3' type='button' onClick={changeToLowercase}>To LowerCase</button>
+                    <button disabled={text.length===0} className='btn btn-primary my-3 mx-3' type='button' onClick={() => navigate(-1)}>go back</button>
+                    <button disabled={text.length===0} className='btn btn-primary my-3 mx-3' type='button' onClick={() => navigate("/byClass")}>To class</button>
 
 
                 </div>

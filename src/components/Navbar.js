@@ -26,7 +26,12 @@ export default function Navbar(props) {
             <li className="nav-item">
               <NavLink style={navLinkStyle} className="nav-link" to="/byClass">{props.about}</NavLink>
             </li>
-
+            <li className="nav-item">
+              <NavLink style={navLinkStyle} className="nav-link" to="Products">Products</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink style={navLinkStyle} className="nav-link" to="Users">Users</NavLink>
+            </li>
           </ul>
           <div className={`form-check form-switch text-${props.mode === "light" ? "black" : "light"}`}>
             <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode} />
